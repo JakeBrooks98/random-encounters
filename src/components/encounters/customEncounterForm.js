@@ -12,16 +12,16 @@ export const CreateEncounter = () => {
         
     });
     const history = useHistory()
-    
+    //create a new encounter object
     const saveEncounter = (evt) => {
         evt.preventDefault()
         const newEncounter = {
             description: encounter.description,
             boss: encounter.boss,
+            typeId:encounter.typeId,
             locationId: encounter.locationId,
             userId: parseInt(localStorage.getItem("user")),
-            challengeRating:encounter.challengeRating,
-            dateCompleted: ""
+            challengeRating:encounter.challengeRating
         }
 
         const fetchOption = {
@@ -36,6 +36,7 @@ export const CreateEncounter = () => {
                 history.push("/encounters")
             })
     }
+    //fetch for locations
     const [locations, assignLocations] = useState([])
     
 
@@ -51,10 +52,27 @@ export const CreateEncounter = () => {
         },
         []
     )
+//fetch for types
+    const [types, assignType] = useState([])
+    
 
+    useEffect(
+        () => {
+            fetch("http://localhost:8088/type")
+                .then(res => res.json())
+                .then(
+                    (typeArray) => { 
+                        assignType(typeArray)
+                    }
+                )
+        },
+        []
+    )
+//display the form as HTML
     return (
         <form className="encounterForm">
             <h2 className="encounterForm__title">Create your own Encounter</h2>
+           
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="description">Description:</label>
@@ -70,6 +88,30 @@ export const CreateEncounter = () => {
                                 updateEncounter(copy)
                             }
                         } />
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="type">Type of Encounter:</label>
+                    <select defaultValue={"0"} id="type"
+                        onChange={
+                            (evt) => {
+                                const copy = { ...encounter }
+                                copy.typeId = evt.target.value
+                                updateEncounter(copy)
+                            }
+                    
+                        } >
+                    <option value="0">Choose Encounter Type...</option>
+                    {types.map(type => {
+                            return <option value={type.id}>
+                        {type.type}
+                    </option>
+
+                        })}</select>
+
+
                 </div>
             </fieldset>
 
@@ -128,6 +170,7 @@ export const CreateEncounter = () => {
                         } />
                 </div>
             </fieldset>
+
             <button className="btn btn-primary" onClick={saveEncounter}>
                 Make Encounter
             </button>
