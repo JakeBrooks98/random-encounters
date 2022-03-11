@@ -58,7 +58,7 @@ export const CreateEncounter = () => {
 
     useEffect(
         () => {
-            fetch("http://localhost:8088/type")
+            fetch("http://localhost:8088/types")
                 .then(res => res.json())
                 .then(
                     (typeArray) => { 

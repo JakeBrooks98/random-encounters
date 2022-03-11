@@ -1,7 +1,6 @@
 //This module is responsible for displaying the list of all encounters
 import React, { useEffect, useState } from "react"
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { useParams } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom/cjs/react-router-dom.min";
 
 //export a function that displays all encounters as HTML
 export const Encounters = () => {
@@ -28,12 +27,15 @@ export const Encounters = () => {
 
     return (
         <>
-            <h1>Encounters</h1>
+        <h1> Choose Your Adventure!</h1>
+            <h3>Encounters</h3>
         {
             encounters.map(
                 (encounter) => { 
                     return <p key={`encounter--${encounter.id}`}>
-                        {encounter.description} 
+                        <Link to={`/encounters/${encounter.id}`}>
+                            {encounter.description} 
+                            </Link>
                         
                         </p>
                 }
@@ -42,3 +44,4 @@ export const Encounters = () => {
         </>
     )
 }
+
