@@ -10,4 +10,5 @@
 .navbar__item {
     flex-basis: 20%;
     list-style-type: none;
+    background-color: #5d5d5d;
 }

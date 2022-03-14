@@ -5,6 +5,7 @@ import { useEffect } from "react"
 export const EncounterRandomizer = () => {
     const [encounters, setEncounters] = useState([])
     const [encounter, setRandomEncounter] = useState({})
+    const [bossEncounter, setBossEncounter] = useState(false)
 
 
 
@@ -20,21 +21,41 @@ export const EncounterRandomizer = () => {
         },
         []
     )
-const createRandomEncounter = () => {
-    const randomEncounter = encounters[Math.floor(Math.random() * encounters.length)];
-    setRandomEncounter(randomEncounter)
+    const createRandomEncounter = () => {
+        if (bossEncounter === false) {
+            const normalEncounters = encounters.filter(encounter => encounter.boss === false)
+            const randomEncounter = normalEncounters[Math.floor(Math.random() * normalEncounters.length)];
+            setRandomEncounter(randomEncounter)
 
-}
+        } else{
+            const bossEncounters = encounters.filter(encounter => encounter.boss === true)
+            const randomEncounter = bossEncounters[Math.floor(Math.random() * bossEncounters.length)];
+            setRandomEncounter(randomEncounter)
+
+        }
+    }
+    
 
     return (
         <>
             <div>
                 <h1>Randomize Your Adventure</h1>
 
-                <button onClick={ () =>
-                    {createRandomEncounter()}}>Roll Random Encounter</button>
-                    {encounter.id !== undefined ? <><p>{encounter.description}</p></>: ""}
+                <div class="randomizer">
+                    <label>Boss:</label><input type="checkbox" value={bossEncounter} onChange={
+                        ()=> {
+                            setBossEncounter(!bossEncounter)
+                        }
+                    }></input>
+                    
+                <button class="randomButton" onClick={() => { createRandomEncounter() }}>Roll Random Encounter</button>
+                {encounter.id !== undefined ? <><p>{encounter.description}</p></> : ""}
+
                 
+
+                </div>
+
+
             </div>
         </>)
 }

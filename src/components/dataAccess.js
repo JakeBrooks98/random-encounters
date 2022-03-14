@@ -7,4 +7,10 @@ export const getUser = () => {
     
 }
 
-//export const getExpandedLocation = 
+/*
+export const getExpandedEncounter = () => {
+    return fetch(`http://localhost:8088/encounters/${encounterId}?_expand=user&_expand=location&_expand=type`)
+.then(response => response.json())
+
+}
+*/

@@ -43,7 +43,7 @@ export const EncounterDescription = () => {
     const updatedEncounter = {
             description: encounter.description,
             boss: encounter.boss,
-            typeId: encounter.typeId,
+            typeId: parseInt(encounter.typeId),
             locationId: parseInt(encounter.locationId),
             userId: parseInt(localStorage.getItem("user")),
             challengeRating: parseInt(encounter.challengeRating)

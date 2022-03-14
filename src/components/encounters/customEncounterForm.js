@@ -18,8 +18,8 @@ export const CreateEncounter = () => {
         const newEncounter = {
             description: encounter.description,
             boss: encounter.boss,
-            typeId:encounter.typeId,
-            locationId: encounter.locationId,
+            typeId:parseInt(encounter.typeId),
+            locationId: parseInt(encounter.locationId),
             userId: parseInt(localStorage.getItem("user")),
             challengeRating:encounter.challengeRating
         }
