@@ -4,6 +4,7 @@ import { CreateEncounter } from "./encounters/customEncounterForm"
 import { EncounterDescription } from "./encounters/EncounterDescription"
 import { Encounters } from "./encounters/Encounters"
 import { MyEncounters } from "./encounters/MyEncounters"
+import {EncounterRandomizer} from "./encounters/EncounterRandomizer"
 import { WelcomePage } from "./WelcomePage"
 
 
@@ -25,6 +26,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path="/encounters/:encounterId(\d+)">
                 <EncounterDescription />
+            </Route>
+            <Route exact path="/encounters/EncounterRandomizer">
+                <EncounterRandomizer/>
             </Route>
         </>
     )

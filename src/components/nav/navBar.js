@@ -18,6 +18,9 @@ export const NavBar = (props) => {
                 <Link className="navbar__link" to="/encounters/myEncounters">My Encounters</Link>
             </li>
             <li className="navbar__item active">
+                <Link className="navbar__link" to="/encounters/EncounterRandomizer">Random Encounters</Link>
+            </li>
+            <li className="navbar__item active">
                 <Link className="navbar__link" to="#"
                 onClick= {
                     () => {

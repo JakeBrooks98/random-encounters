@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import { Link } from "react-router-dom"
+import { getUser } from "../dataAccess"
+
 
 
 //export a function that displays only user encounters as HTML 
@@ -12,8 +14,7 @@ export const MyEncounters = () => {
     const user = localStorage.getItem("user")
 
     const getEncounter = () => {
-        fetch(`http://localhost:8088/encounters?userId=${user}`)
-        .then(res => res.json())
+        getUser()
         .then(
             (data) => {
                 updateEncounter(data)
