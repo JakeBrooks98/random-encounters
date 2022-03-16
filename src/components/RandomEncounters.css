@@ -18,7 +18,7 @@ textarea {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Tiamat Condensed SC Regular","Patua One", serif;
   letter-spacing: 2px;
-  background-color: #e03e20;
+  background-color: #db381b;
   text-align: center;
 }
 
@@ -30,6 +30,7 @@ p {
   background-color: rgb(207, 199, 189);
   padding-left: 5px;
   padding-right: 5px;
+  font-size: large;
 }
 
 button{
@@ -49,4 +50,5 @@ button{
   align-content: center;
 
 }
+
 

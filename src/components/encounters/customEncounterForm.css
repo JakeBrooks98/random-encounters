@@ -1,25 +1,14 @@
+/* Import the google web fonts you want to use */
+@import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
 @font-face {font-family: "Tiamat Condensed SC Regular"; src: url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.eot"); src: url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.woff") format("woff"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.svg#Tiamat Condensed SC Regular") format("svg"); }
 
-.navbar {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: left;
-    background-color: #5d5d5d;
-    color: white;
+
+.form-group{
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
-
-.navbar__item {
-    flex-basis: 20%;
-    list-style-type: none;
-    background-color: #5d5d5d;
-}
-
-.RandomEncounters{
-    font-family: "Tiamat Condensed SC Regular";
+.form-button{
     background-color: #9d0a0e;
+  color: white;
 }
-
-
-
-

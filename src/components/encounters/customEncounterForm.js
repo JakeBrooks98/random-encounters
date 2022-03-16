@@ -2,6 +2,7 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect } from "react";
+import "./customEncounterForm.css"
 
 export const CreateEncounter = () => {
     
@@ -171,7 +172,7 @@ export const CreateEncounter = () => {
                 </div>
             </fieldset>
 
-            <button className="btn btn-primary" onClick={saveEncounter}>
+            <button className="form-button" onClick={saveEncounter}>
                 Make Encounter
             </button>
         </form>

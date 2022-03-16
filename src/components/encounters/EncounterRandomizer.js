@@ -49,7 +49,7 @@ export const EncounterRandomizer = () => {
                     }></input>
                     
                 <button class="randomButton" onClick={() => { createRandomEncounter() }}>Roll Random Encounter</button>
-                {encounter.id !== undefined ? <><p>{encounter.description}</p></> : ""}
+                {encounter.id !== undefined ? <><p><i>{encounter.description}</i></p></> : ""}
 
                 
 

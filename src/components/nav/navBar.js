@@ -30,7 +30,7 @@ export const NavBar = (props) => {
                             <NavLink href="/encounters/myEncounters">My Encounters</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="#"
+                            <NavLink href="/login"
                                 onClick={
                                     () => {
                                         localStorage.removeItem("user")
