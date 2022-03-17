@@ -60,3 +60,12 @@ export const EncounterRandomizer = () => {
         </>)
 }
 
+
+/*
+if(biome !== {}){
+    
+}
+
+if(challengeRating )
+*/
+

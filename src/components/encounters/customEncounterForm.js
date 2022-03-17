@@ -5,12 +5,12 @@ import { useEffect } from "react";
 import "./customEncounterForm.css"
 
 export const CreateEncounter = () => {
-    
+
     const [encounter, updateEncounter] = useState({
         description: "",
         boss: false,
-        challengeRating:""
-        
+        challengeRating: ""
+
     });
     const history = useHistory()
     //create a new encounter object
@@ -19,10 +19,10 @@ export const CreateEncounter = () => {
         const newEncounter = {
             description: encounter.description,
             boss: encounter.boss,
-            typeId:parseInt(encounter.typeId),
+            typeId: parseInt(encounter.typeId),
             locationId: parseInt(encounter.locationId),
             userId: parseInt(localStorage.getItem("user")),
-            challengeRating:encounter.challengeRating
+            challengeRating: encounter.challengeRating
         }
 
         const fetchOption = {
@@ -33,47 +33,55 @@ export const CreateEncounter = () => {
             body: JSON.stringify(newEncounter)
         }
         return fetch("http://localhost:8088/encounters", fetchOption)
-            .then(() => {
-                history.push("/encounters")
-            })
     }
     //fetch for locations
     const [locations, assignLocations] = useState([])
-    
+
 
     useEffect(
         () => {
             fetch("http://localhost:8088/locations")
                 .then(res => res.json())
                 .then(
-                    (locationArray) => { 
+                    (locationArray) => {
                         assignLocations(locationArray)
                     }
                 )
         },
         []
     )
-//fetch for types
+    //fetch for types
     const [types, assignType] = useState([])
-    
+
 
     useEffect(
         () => {
             fetch("http://localhost:8088/types")
                 .then(res => res.json())
                 .then(
-                    (typeArray) => { 
+                    (typeArray) => {
                         assignType(typeArray)
                     }
                 )
         },
         []
     )
-//display the form as HTML
+
+    //function for Next button onClick
+    const nextButton = (e) => {
+
+        saveEncounter(e)
+            //code to navigate me to monsters page
+            .then(data => data.json())
+            .then((data) => history.push(`/Monsters/${data.id}`))
+
+    }
+
+    //display the form as HTML
     return (
         <form className="encounterForm">
             <h2 className="encounterForm__title">Create your own Encounter</h2>
-           
+
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="description">Description:</label>
@@ -102,13 +110,13 @@ export const CreateEncounter = () => {
                                 copy.typeId = evt.target.value
                                 updateEncounter(copy)
                             }
-                    
+
                         } >
-                    <option value="0">Choose Encounter Type...</option>
-                    {types.map(type => {
+                        <option value="0">Choose Encounter Type...</option>
+                        {types.map(type => {
                             return <option value={type.id}>
-                        {type.type}
-                    </option>
+                                {type.type}
+                            </option>
 
                         })}</select>
 
@@ -126,13 +134,13 @@ export const CreateEncounter = () => {
                                 copy.locationId = evt.target.value
                                 updateEncounter(copy)
                             }
-                    
+
                         } >
-                    <option value="0">Select a location...</option>
-                    {locations.map(location => {
+                        <option value="0">Select a location...</option>
+                        {locations.map(location => {
                             return <option value={location.id}>
-                        {location.biome}
-                    </option>
+                                {location.biome}
+                            </option>
 
                         })}</select>
 
@@ -172,9 +180,15 @@ export const CreateEncounter = () => {
                 </div>
             </fieldset>
 
-            <button className="form-button" onClick={saveEncounter}>
-                Make Encounter
+            {//change make encounter button to be a next button that still submits encounter on click
+                //button takes user to the monster page with checkboxes where they can check the box of monsters in the encounter
+            }
+            <button className="form-button" onClick={nextButton}>
+                Next
             </button>
         </form>
     )
 }
+
+//when hitting submit on that page it will create an encounter monsters object with the encounterIds and monsterIds
+//use the monsterIds on encounterMonsters to display monster stats from Api and show monsters on description page
