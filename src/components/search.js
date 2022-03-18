@@ -13,6 +13,5 @@ export const SearchBar = ({ searchQuery, setSearchQuery }) => (
             placeholder="Search Monsters"
             name="s"
         />
-        <button type="submit">Search</button>
     </form>
 );

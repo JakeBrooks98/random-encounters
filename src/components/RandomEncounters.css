@@ -81,4 +81,5 @@ a:active {
 
 .backButton{
   justify-content: space-around;
+  margin: 0.5em;
 }

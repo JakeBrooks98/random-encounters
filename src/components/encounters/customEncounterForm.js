@@ -17,12 +17,12 @@ export const CreateEncounter = () => {
     const saveEncounter = (evt) => {
         evt.preventDefault()
         const newEncounter = {
-            description: encounter.description,
+            description: encounter.description.charAt(0).toUpperCase() +encounter.description.slice(1),
             boss: encounter.boss,
             typeId: parseInt(encounter.typeId),
             locationId: parseInt(encounter.locationId),
             userId: parseInt(localStorage.getItem("user")),
-            challengeRating: encounter.challengeRating
+            challengeRating: parseInt(encounter.challengeRating)
         }
 
         const fetchOption = {

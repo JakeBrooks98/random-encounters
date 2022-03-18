@@ -48,7 +48,7 @@ export const EncounterDescription = () => {
             typeId: parseInt(encounter.typeId),
             locationId: parseInt(encounter.locationId),
             userId: parseInt(localStorage.getItem("user")),
-            challengeRating: parseInt(encounter.challengeRating)
+            challengeRating: parseFloat(encounter.challengeRating)
     }
 
     // Perform the PUT HTTP request to replace the resource
@@ -94,6 +94,7 @@ export const EncounterDescription = () => {
                             </select>
                         <input className="encounter__challengeRating"  onChange={
                             (evt) => {
+                                
                                 const copy = { ...encounter }
                                 copy.challengeRating = evt.target.value
                                 assignEncounter(copy)
