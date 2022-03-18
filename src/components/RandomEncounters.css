@@ -10,7 +10,7 @@ input,
 select,
 textarea {
   color: #404040;
-  font-family: "Comfortaa", Arial, sans-serif;
+  font-family: "sans-serif, Comfortaa, Arial";
   font-size: 14px;
   line-height: 1.5;
 }
@@ -18,7 +18,7 @@ textarea {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Tiamat Condensed SC Regular","Patua One", serif;
   letter-spacing: 2px;
-  background-color: #db381b;
+  background-color: #9d0a0e;
   text-align: center;
 }
 
@@ -51,4 +51,34 @@ button{
 
 }
 
+Link{
+  color:black
+}
 
+/* unvisited link */
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: #9d0a0e;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: #9d0a0e;
+  text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+  color: #9d0a0e;
+  text-decoration: none;
+}
+
+.backButton{
+  justify-content: space-around;
+}

@@ -35,7 +35,9 @@ export const EncounterDescription = () => {
         },
         []
     )
-
+    const backButton =()=> {
+        history.push(`/Encounters`)
+    }
     
     const editEncounter = (evt) => {
 
@@ -67,6 +69,7 @@ export const EncounterDescription = () => {
         if(editable===true){
             return(
             <>
+            
                     <section className="encounter">
                         <textarea className="encounter__description"  onChange={
                             (evt) => {
@@ -102,6 +105,7 @@ export const EncounterDescription = () => {
         }else{
             return (
                 <>
+                <button class="backButton" onClick={backButton}>Back</button>
                     <section className="encounter">
                         <div className="encounter__description">{encounter.description}</div>
                         <div className="encounter__user">Submitted by {encounter.user?.name}</div>

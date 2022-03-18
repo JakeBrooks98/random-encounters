@@ -62,10 +62,35 @@ export const EncounterRandomizer = () => {
 
 
 /*
-if(biome !== {}){
+if(location !== {}){
     
 }
 
-if(challengeRating )
+<div className="form-group">
+                    <label htmlFor="location">Location:</label>
+                    <select defaultValue={"0"} id="location"
+                        onChange={
+                            (evt) => {
+                                const copy = { ...encounter }
+                                copy.locationId = evt.target.value
+                                updateEncounter(copy)
+                            }
+
+                        } >
+                        <option value="0">Select a location...</option>
+                        {locations.map(location => {
+                            return <option value={location.id}>
+                                {location.biome}
+                            </option>
+
+                        })}</select>
+
+
+                </div>
+
+if(challengeRating !== 0 ){
+
+}
+
 */
 

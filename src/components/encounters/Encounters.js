@@ -10,7 +10,7 @@ export const Encounters = () => {
 
     useEffect(
         () => {
-            fetch("http://localhost:8088/encounters")
+            fetch("http://localhost:8088/encounters?_sort=description")
                 .then(res => res.json())
                 .then(
                     (encounterArray) => { 
