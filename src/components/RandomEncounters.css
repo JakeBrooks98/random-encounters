@@ -27,6 +27,7 @@ p {
 }
 
 *{
+  font-family: "Roboto Condensed","Roboto","Helvetica","sans-serif";
   background-color: rgb(207, 199, 189);
   padding-left: 5px;
   padding-right: 5px;
@@ -34,8 +35,18 @@ p {
 }
 
 button{
+  font-family: "Tiamat Condensed SC Regular","Patua One", serif;
+  padding:.5em;
   background-color: #9d0a0e;
   color: white;
+}
+
+button:hover {
+  font-family: "Tiamat Condensed SC Regular","Patua One", serif;
+  padding: .5em;
+  background-color: rgb(26, 25, 25);
+  color: #9d0a0e;
+  border:white;
 }
 
 .randomButton{
@@ -69,7 +80,7 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-  color: #9d0a0e;
+  color: white;
   text-decoration: underline;
 }
 
