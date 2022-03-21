@@ -183,7 +183,7 @@ export const CreateEncounter = () => {
             {//change make encounter button to be a next button that still submits encounter on click
                 //button takes user to the monster page with checkboxes where they can check the box of monsters in the encounter
             }
-            <button className="form-button" onClick={nextButton}>
+            <button className="next-button" onClick={nextButton}>
                 Next
             </button>
         </form>
