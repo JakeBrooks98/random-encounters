@@ -5,7 +5,7 @@
 fieldset {
     min-width: 0;
     padding: 1rem 0;
-    margin: 0;
+    margin: 1em;
     border: 0;
 }
 
@@ -39,6 +39,7 @@ fieldset {
     border-radius: .25rem;
     -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin:1em;
 }
 
 .container--login {

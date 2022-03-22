@@ -1,6 +1,7 @@
 //This module will display the details of individual encounters
 import React, { useEffect, useState } from "react"
 import { useParams, useHistory } from "react-router-dom"
+import { Monsters } from "../monsterProvider"
 
 export const EncounterDescription = () => {
     const [encounter, assignEncounter] = useState({})  // State variable for current encounter object
@@ -8,6 +9,7 @@ export const EncounterDescription = () => {
     const history = useHistory()
     const [editable, setEditableState]= useState(false)
     const [locations, setLocations] =useState([])
+    const [encounterMonsters, setEncounterMonsters] =useState([])
     const user = localStorage.getItem("user")
 
     // Fetch the individual encounter when the parameter value changes
@@ -35,6 +37,27 @@ export const EncounterDescription = () => {
         },
         []
     )
+
+    useEffect(
+        ()=> {
+            return fetch(`http://localhost:8088/encounterMonsters?_expand=encounter&_expand=monster`)
+            .then(response => response.json())
+            .then((data) => {
+                setEncounterMonsters(data)
+            })
+        },
+        []
+    )
+    /*const MonsterDescription = () => {
+        encounterMonster.forEach(encounterMonster=> 
+            ()=> {
+                if(encounter.id === encounterMonster.encounterId){
+                   return `<div className="encounter__monsters">Monsters: {monster?.name}</div>`
+                }
+            })
+
+    }
+        */
     const backButton =()=> {
         history.push(`/Encounters`)
     }
@@ -112,6 +135,7 @@ export const EncounterDescription = () => {
                         <div className="encounter__user">Submitted by {encounter.user?.name}</div>
                         <div className="encounter__location">Located in {encounter.location?.biome}</div>
                         <div className="encounter__challengeRating">Challenge Rating: {encounter.challengeRating}</div>
+                        
                         {encounter.user?.id ===parseInt(user) ? <button onClick={
                             () => 
                             setEditableState(true)
