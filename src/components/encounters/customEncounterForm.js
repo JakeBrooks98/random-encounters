@@ -189,6 +189,3 @@ export const CreateEncounter = () => {
         </form>
     )
 }
-
-//when hitting submit on that page it will create an encounter monsters object with the encounterIds and monsterIds
-//use the monsterIds on encounterMonsters to display monster stats from Api and show monsters on description page

@@ -159,6 +159,10 @@ export const EncounterDescription = () => {
                         <div className="encounter__monsters">{MonsterDescription()}</div>
                         {encounter.user?.id === parseInt(user) ? <button onClick={
                             () =>
+                                history.push(`/Monsters/${encounterId}`)
+                        }>Add Monster</button> : null}
+                        {encounter.user?.id === parseInt(user) ? <button onClick={
+                            () =>
                                 setEditableState(true)
                         }>Edit</button> : null}
                     </section>
