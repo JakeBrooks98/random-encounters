@@ -22,7 +22,7 @@ export const CreateEncounter = () => {
             typeId: parseInt(encounter.typeId),
             locationId: parseInt(encounter.locationId),
             userId: parseInt(localStorage.getItem("user")),
-            challengeRating: parseInt(encounter.challengeRating)
+            challengeRating: parseFloat(encounter.challengeRating)
         }
 
         const fetchOption = {

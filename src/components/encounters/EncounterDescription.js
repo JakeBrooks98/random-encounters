@@ -1,21 +1,24 @@
 //This module will display the details of individual encounters
 import React, { useEffect, useState } from "react"
-import { useParams, useHistory } from "react-router-dom"
-import { Monsters } from "../monsterProvider"
+import { useParams, useHistory, Link } from "react-router-dom"
+import { MonsterStats } from "../monsterStats"
+
+
 
 export const EncounterDescription = () => {
     const [encounter, assignEncounter] = useState({})  // State variable for current encounter object
     const { encounterId } = useParams()  // Variable storing the route parameter
     const history = useHistory()
-    const [editable, setEditableState]= useState(false)
-    const [locations, setLocations] =useState([])
-    const [encounterMonsters, setEncounterMonsters] =useState([])
+    const [editable, setEditableState] = useState(false)
+    const [locations, setLocations] = useState([])
+    const [encounterMonsters, setEncounterMonsters] = useState([])
     const user = localStorage.getItem("user")
+    const [showMonsterStats, updateShowMonsterStats]= useState(0)
 
     // Fetch the individual encounter when the parameter value changes
     useEffect(
         () => {
-            if(editable===false) {
+            if (editable === false) {
                 return fetch(`http://localhost:8088/encounters/${encounterId}?_expand=user&_expand=location&_expand=type`)
                     .then(response => response.json())
                     .then((data) => {
@@ -24,125 +27,149 @@ export const EncounterDescription = () => {
             }
 
         },
-        [ encounterId, editable ]  // Above function runs when the value of encounterId change
+        [encounterId, editable]  // Above function runs when the value of encounterId change
     )
 
     useEffect(
-        ()=> {
+        () => {
             return fetch(`http://localhost:8088/locations`)
-            .then(response => response.json())
-            .then((data) => {
-                setLocations(data)
-            })
+                .then(response => response.json())
+                .then((data) => {
+                    setLocations(data)
+                })
         },
         []
     )
 
     useEffect(
-        ()=> {
-            return fetch(`http://localhost:8088/encounterMonsters?_expand=encounter&_expand=monster`)
-            .then(response => response.json())
-            .then((data) => {
-                setEncounterMonsters(data)
-            })
+        () => {
+            return fetch(`http://localhost:8088/encounterMonsters?_expand=encounter&_expand=monster&encounterId=${encounterId}`)
+                .then(response => response.json())
+                .then((data) => {
+                    setEncounterMonsters(data)
+                })
         },
         []
     )
-    /*const MonsterDescription = () => {
-        encounterMonster.forEach(encounterMonster=> 
-            ()=> {
-                if(encounter.id === encounterMonster.encounterId){
-                   return `<div className="encounter__monsters">Monsters: {monster?.name}</div>`
-                }
-            })
+
+    //Function to display the monsters on encounter
+    const MonsterDescription = () => {
+        if(encounterMonsters.length !== 0){
+            const monsterLinks = encounterMonsters.map((encounterMonster) => {
+                        return <>
+                        <p className="monsterLink" onClick={
+                            () => {
+                                updateShowMonsterStats(encounterMonster.monster.id)
+                            }
+                        }>{encounterMonster.monster.name}</p>
+                    </>
+                    
+                })
+            return <>
+            <p>Monsters:</p>
+            {monsterLinks}
+            </>
+
+        } else{
+            return []
+        }
+
 
     }
-        */
-    const backButton =()=> {
+
+
+    const backButton = () => {
         history.push(`/Encounters`)
     }
-    
+
     const editEncounter = (evt) => {
 
-    // Construct a new object to replace the existing one in the API
-    const updatedEncounter = {
+        // Construct a new object to replace the existing one in the API
+        const updatedEncounter = {
             description: encounter.description,
             boss: encounter.boss,
             typeId: parseInt(encounter.typeId),
             locationId: parseInt(encounter.locationId),
             userId: parseInt(localStorage.getItem("user")),
             challengeRating: parseFloat(encounter.challengeRating)
+        }
+
+        // Perform the PUT HTTP request to replace the resource
+        fetch(`http://localhost:8088/encounters/${encounterId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedEncounter)
+        })
+            .then(() => {
+                setEditableState(false)
+            })
     }
 
-    // Perform the PUT HTTP request to replace the resource
-    fetch(`http://localhost:8088/encounters/${encounterId}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(updatedEncounter)
-    })
-        .then(() => {
-            setEditableState(false)
-        })
-}
 
 
-
-        if(editable===true){
-            return(
+    if (editable === true) {
+        return (
             <>
-            
-                    <section className="encounter">
-                        <textarea className="encounter__description"  onChange={
-                            (evt) => {
-                                const copy = { ...encounter }
-                                copy.description = evt.target.value
-                                assignEncounter(copy)
-                            }} value={encounter.description}/>
-                        <div className="encounter__user">Submitted by {encounter.user?.name}</div>
-                        <select className="encounter__location" value={encounter.locationId} onChange={
-                            (evt) => {
-                                const copy = { ...encounter }
-                                copy.locationId = evt.target.value
-                                assignEncounter(copy)
-                            }} >
-                                <option value="0">Select a location...</option>
-                    {locations.map(location => {
+
+                <section className="encounter">
+                    <textarea className="encounter__description" onChange={
+                        (evt) => {
+                            const copy = { ...encounter }
+                            copy.description = evt.target.value
+                            assignEncounter(copy)
+                        }} value={encounter.description} />
+                    <div className="encounter__user">Submitted by {encounter.user?.name}</div>
+                    <select className="encounter__location" value={encounter.locationId} onChange={
+                        (evt) => {
+                            const copy = { ...encounter }
+                            copy.locationId = evt.target.value
+                            assignEncounter(copy)
+                        }} >
+                        <option value="0">Select a location...</option>
+                        {locations.map(location => {
                             return <option value={location.id}>
-                        {location.biome}
-                    </option>
+                                {location.biome}
+                            </option>
 
                         })}
-                            </select>
-                        <input className="encounter__challengeRating"  onChange={
-                            (evt) => {
-                                
-                                const copy = { ...encounter }
-                                copy.challengeRating = evt.target.value
-                                assignEncounter(copy)
-                            }} value= {encounter.challengeRating}/>
-                    </section>
+                    </select>
+                    <input className="encounter__challengeRating" onChange={
+                        (evt) => {
 
-                    <button onClick={editEncounter}>Submit Changes</button>
-                </>)
-        }else{
-            return (
-                <>
+                            const copy = { ...encounter }
+                            copy.challengeRating = evt.target.value
+                            assignEncounter(copy)
+                        }} value={encounter.challengeRating} />
+                </section>
+
+                <button onClick={editEncounter}>Submit Changes</button>
+            </>)
+    } else {
+        return (
+            <>
                 <button class="backButton" onClick={backButton}>Back</button>
-                    <section className="encounter">
+                <section className="card-section">
+                    <section className="encounter-card">
                         <div className="encounter__description">{encounter.description}</div>
                         <div className="encounter__user">Submitted by {encounter.user?.name}</div>
                         <div className="encounter__location">Located in {encounter.location?.biome}</div>
                         <div className="encounter__challengeRating">Challenge Rating: {encounter.challengeRating}</div>
-                        
-                        {encounter.user?.id ===parseInt(user) ? <button onClick={
-                            () => 
-                            setEditableState(true)
+                        <div className="encounter__monsters">{MonsterDescription()}</div>
+                        {encounter.user?.id === parseInt(user) ? <button onClick={
+                            () =>
+                                setEditableState(true)
                         }>Edit</button> : null}
                     </section>
-                </>
-            )
-        }
-    
+                    <div class="statblock-section">
+                        {encounterMonsters.map(encounterMonster => {
+                            return encounterMonster.monster.id === showMonsterStats ? <MonsterStats url={encounterMonster.monster.url}/> : null
+                        })}
+                    </div>
+                </section>
+            </>
+        )
+    }
+
 }

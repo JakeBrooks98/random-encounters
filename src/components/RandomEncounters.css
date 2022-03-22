@@ -107,3 +107,42 @@ a:active {
   position: relative;
   transition: 0.5s;
 }
+
+.encounter-card{
+  height: 375px;
+  width:350px;
+  border: 2px solid black;
+    border-radius: .25rem;
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 10px 10px 6px 1px #5d5d5d;
+    transition: box-shadow 0.25s ease;
+}
+
+.encounter-card:hover{
+  box-shadow: 12px 12px 8px 1px #5d5d5d;
+}
+
+.monster-card{
+  height: 485px;
+  width:405px;
+  border: 2px solid black;
+    border-radius: .25rem;
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 10px 10px 6px 1px #5d5d5d;
+    transition: box-shadow 0.25s ease;
+}
+
+.monster-card:hover{
+  box-shadow: 12px 12px 8px 1px #5d5d5d;
+}
+
+.card-section{
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.monsterLink{
+  color:#9d0a0e
+}
