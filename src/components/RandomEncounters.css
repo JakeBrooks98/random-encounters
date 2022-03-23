@@ -119,10 +119,6 @@ a:active {
     transition: box-shadow 0.25s ease;
 }
 
-.encounter-card:hover{
-  box-shadow: 12px 12px 8px 1px #5d5d5d;
-}
-
 .monster-card{
   height: 485px;
   width:405px;
@@ -134,10 +130,6 @@ a:active {
     transition: box-shadow 0.25s ease;
 }
 
-.monster-card:hover{
-  box-shadow: 12px 12px 8px 1px #5d5d5d;
-}
-
 .card-section{
   display:flex;
   flex-wrap: wrap;
@@ -145,4 +137,9 @@ a:active {
 
 .monsterLink{
   color:#9d0a0e
+}
+
+.monsterLink:hover{
+  font-weight: bold;
+  text-decoration: underline;
 }
