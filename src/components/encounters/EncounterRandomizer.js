@@ -1,6 +1,7 @@
 //This module will contain the code for an encounter randomizer
 import { useState } from "react"
 import { useEffect } from "react"
+import { getLocations, getTypes } from "../dataAccess"
 
 export const EncounterRandomizer = () => {
     const [encounters, setEncounters] = useState([])
@@ -27,12 +28,9 @@ export const EncounterRandomizer = () => {
 
     //fetch for locations
     const [locations, assignLocations] = useState([])
-
-
     useEffect(
         () => {
-            fetch("http://localhost:8088/locations")
-                .then(res => res.json())
+            getLocations()
                 .then(
                     (locationArray) => {
                         assignLocations(locationArray)
@@ -41,14 +39,12 @@ export const EncounterRandomizer = () => {
         },
         []
     )
+    
     //fetch for types
     const [types, assignType] = useState([])
-
-
     useEffect(
         () => {
-            fetch("http://localhost:8088/types")
-                .then(res => res.json())
+            getTypes()
                 .then(
                     (typeArray) => {
                         assignType(typeArray)

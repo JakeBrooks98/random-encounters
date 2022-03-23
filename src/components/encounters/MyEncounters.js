@@ -13,6 +13,7 @@ export const MyEncounters = () => {
     const history = useHistory()
     const user = localStorage.getItem("user")
 
+    //gets the current user and updates the encounters array to be just encounters with their userId
     const getEncounter = () => {
         getUser()
         .then(
@@ -30,16 +31,18 @@ export const MyEncounters = () => {
     )
 
 
-    //function to delete encounter
+    //function to delete encounter accepting its id as an argument
     const deleteEncounter = (id) => {
         fetch(`http://localhost:8088/encounters/${id}`, {
             method: "DELETE"
-        }).then(
+        })
+        .then(
             () => {
                 getEncounter()
             }
         )
     }
+    //displays all encounters in the encounter array
     return (
         <>
             <h1> My Encounters</h1>
@@ -52,7 +55,7 @@ export const MyEncounters = () => {
                             {encounter.description} 
                             </Link>
                             <button onClick={() => {
-                                deleteEncounter(encounter.id)
+                                deleteEncounter(encounter.id.toString())
                             }}>Delete</button>
 
                         </p>

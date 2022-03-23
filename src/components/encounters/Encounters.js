@@ -7,7 +7,7 @@ export const Encounters = () => {
     const [encounters, setEncounters] = useState([])
 
    
-
+//fetch call that organizes encounters into alphabetical order
     useEffect(
         () => {
             fetch("http://localhost:8088/encounters?_sort=description")
@@ -24,7 +24,7 @@ export const Encounters = () => {
 
     const history = useHistory()
     
-
+//maps through and displays a list of all enocunters
     return (
         <>
         <h1> Choose Your Adventure!</h1>
