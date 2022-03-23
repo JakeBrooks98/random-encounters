@@ -1,0 +1,145 @@
+/* Import the google web fonts you want to use */
+@import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+@font-face {font-family: "Tiamat Condensed SC Regular"; src: url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.eot"); src: url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.woff") format("woff"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.svg#Tiamat Condensed SC Regular") format("svg"); }
+
+/*Typography
+--------------------------------------------------------------*/
+body,
+button,
+input,
+select,
+textarea {
+  color: #404040;
+  font-family: "sans-serif, Comfortaa, Arial";
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Tiamat Condensed SC Regular","Patua One", serif;
+  letter-spacing: 2px;
+  background-color: #9d0a0e;
+  text-align: center;
+  -webkit-text-stroke-width: .5px;
+            -webkit-text-stroke-color: white;
+}
+
+p {
+  margin-bottom: 1.5em;
+}
+
+*{
+  font-family: "Roboto Condensed","Roboto","Helvetica","sans-serif";
+  background-color: rgb(207, 199, 189);
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: large;
+}
+/*button css*/
+button{
+  font-family: "Roboto Condensed","Roboto",Helvetica,sans-serif;
+  font-weight: bold;
+  font-size: 12px!important;
+  text-transform: uppercase!important;
+  padding:.9em;
+  background: #BC0F0F;
+  color: white;
+  border-radius: 8px!important;
+}
+/*button hover css*/
+button:hover {
+  font-family: "Roboto Condensed","Roboto",Helvetica,sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: .9em;
+  background-color: rgb(26, 25, 25);
+  color: #9d0a0e;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  transition: 0.5s;
+  border-radius: 8px;
+}
+/*randomizer button css*/
+.randomButton{
+  display: flex;
+  align-items: center;
+}
+
+.randomizer{
+  padding-top: 1em;
+  align-content: center;
+
+}
+
+
+/* unvisited link */
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: #9d0a0e;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: white!important;
+  text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+  color: #9d0a0e;
+  text-decoration: none;
+}
+
+.backButton{
+  justify-content: space-around;
+  margin: 0.5em;
+}
+
+.next-button{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.encounter-card{
+  height: 375px;
+  width:350px;
+  border: 2px solid black;
+    border-radius: .25rem;
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 10px 10px 6px 1px #5d5d5d;
+    transition: box-shadow 0.25s ease;
+}
+
+.monster-card{
+  height: 485px;
+  width:405px;
+  border: 2px solid black;
+    border-radius: .25rem;
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 10px 10px 6px 1px #5d5d5d;
+    transition: box-shadow 0.25s ease;
+}
+
+.card-section{
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.monsterLink{
+  color:#9d0a0e
+}
+
+.monsterLink:hover{
+  font-weight: bold;
+  text-decoration: underline;
+}

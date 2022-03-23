@@ -1,0 +1,41 @@
+@font-face {font-family: "Tiamat Condensed SC Regular"; src: url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.eot"); src: url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.woff") format("woff"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.svg#Tiamat Condensed SC Regular") format("svg"); }
+
+.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: left;
+    background-color: #242527;
+    color: white;
+}
+/*navbar toggler*/
+.navbar-toggler{
+    background-color: #BC0F0F!important;
+    border:solid white;
+}
+
+.navbar-toggler-icon{
+    background-color: #BC0F0F;
+    color:white;
+}
+
+
+.navbar__item {
+    flex-basis: 20%;
+    list-style-type: none;
+    background-color: #5d5d5d;
+}
+
+.RandomEncounters{
+    font-family: "Tiamat Condensed SC Regular";
+    font-size: larger;
+    background-color: #242527;
+    color: white!important;
+}
+
+.container-fluid{
+    background-color: #242527;
+}
+
+
+
+
