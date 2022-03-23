@@ -242,7 +242,8 @@ export const EncounterRandomizer = () => {
                     }></input>
 
                     <button class="randomButton" onClick={() => { createRandomEncounter() }}>Roll Random Encounter</button>
-                    {encounter?.id !== undefined ? <><p><i>{encounter.description}</i></p></> : encounter?.searchFailed ? "nothing matches that criteria" : ""}
+                    {encounter?.id !== undefined & encounter.typeId === 1 ? <><p><i>Your Party Encounters {encounter.description}...</i></p></> : encounter?.id !== undefined & encounter.typeId === 2? <><p><i>{encounter.description}</i></p></> : encounter?.searchFailed ? "nothing matches that criteria" : ""}
+                    
 
 
 
