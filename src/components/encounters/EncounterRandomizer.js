@@ -229,7 +229,7 @@ export const EncounterRandomizer = () => {
 
 
                 <div class="randomizer">
-                    <label>Boss:</label><input type="checkbox" value={searchCriteria.bossEncounter} onChange={
+                    <label>💀Boss:</label><input type="checkbox" value={searchCriteria.bossEncounter} onChange={
                         () => {
                             let copy = { ...searchCriteria }
                             copy.bossEncounter = !searchCriteria.bossEncounter

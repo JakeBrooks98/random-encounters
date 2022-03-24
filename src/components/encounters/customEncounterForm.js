@@ -147,7 +147,7 @@ export const CreateEncounter = () => {
 
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Boss:</label>
+                    <label htmlFor="name">💀Boss:</label>
                     <input type="checkbox"
                         onChange={
                             (evt) => {
