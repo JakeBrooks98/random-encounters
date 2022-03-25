@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { useEffect } from "react"
 import { getLocations, getTypes } from "../dataAccess"
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export const EncounterRandomizer = () => {
     const [encounters, setEncounters] = useState([])
@@ -65,6 +66,17 @@ export const EncounterRandomizer = () => {
                     }
                 }
             )
+
+        }else{
+            messageContainer.innerHTML=""
+        }
+    }
+
+    const challengeRatingMessage =(copy) => {
+        const messageContainer=document.querySelector(".challengeRatingMessage")
+        if(copy.challengeRating >= 2){
+               return messageContainer.innerHTML=
+                `<p class="challengeRatingMessage" >(You are looking for a great challenge, you may need to check Boss to see results...)</p>`
 
         }else{
             messageContainer.innerHTML=""
@@ -193,13 +205,14 @@ export const EncounterRandomizer = () => {
 
                 <fieldset>
                     <div className="form-group">
-                        <label htmlFor="location">Challenge Rating:</label>
+                        <label htmlFor="challengeRating">Challenge Rating:</label>
                         <select defaultValue={"0"} id="challengeRating"
                             onChange={
                                 (evt) => {
                                     const copy = { ...searchCriteria }
                                     copy.challengeRating = parseInt(evt.target.value)
                                     updateSearchCriteria(copy)
+                                    {challengeRatingMessage(copy)}
                                 }
 
                             } >
@@ -225,6 +238,9 @@ export const EncounterRandomizer = () => {
 
                     </div>
                 </fieldset>
+                <div className="challengeRatingMessage">
+
+                </div>
 
 
 
@@ -238,7 +254,11 @@ export const EncounterRandomizer = () => {
                     }></input>
 
                     <button class="randomButton" onClick={() => { createRandomEncounter() }}>Roll Random Encounter</button>
-                    {encounter?.id !== undefined & encounter.typeId === 1 ? <><p><i>Your Party Encounters {encounter.description}...</i></p></> : encounter?.id !== undefined & encounter.typeId === 2? <><p><i>{encounter.description}</i></p></> : encounter?.searchFailed ? "nothing matches that criteria" : ""}
+                    {encounter?.id !== undefined & encounter.typeId === 1 ? <><p><i>Your Party Encounters <Link className="randomizerLink" to={`/encounters/${encounter.id}`}>
+                                    {encounter.description}
+                                </Link>...</i></p></> : encounter?.id !== undefined & encounter.typeId === 2? <><p><i><Link className="randomizerLink" to={`/encounters/${encounter.id}`}>
+                                    {encounter.description}
+                                </Link></i></p></> : encounter?.searchFailed ? "nothing matches that criteria" : ""}
                     
 
 

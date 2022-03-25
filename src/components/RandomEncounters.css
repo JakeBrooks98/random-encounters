@@ -144,3 +144,12 @@ a:active {
   font-weight: bold;
   text-decoration: underline;
 }
+
+.randomizerLink{
+  color:black !important;
+}
+
+.challengeRatingMessage{
+  font-size: smaller;
+  font-weight: lighter;
+}
