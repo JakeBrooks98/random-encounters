@@ -45,6 +45,7 @@ button{
   background: #BC0F0F;
   color: white;
   border-radius: 8px!important;
+  margin: .5em;
 }
 /*button hover css*/
 button:hover {

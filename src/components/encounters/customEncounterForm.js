@@ -2,6 +2,7 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect } from "react";
+import { getLocations, getTypes } from "../dataAccess";
 import "./customEncounterForm.css"
 
 export const CreateEncounter = () => {
@@ -36,12 +37,9 @@ export const CreateEncounter = () => {
     }
     //fetch for locations
     const [locations, assignLocations] = useState([])
-
-
     useEffect(
         () => {
-            fetch("http://localhost:8088/locations")
-                .then(res => res.json())
+            getLocations()
                 .then(
                     (locationArray) => {
                         assignLocations(locationArray)
@@ -50,14 +48,12 @@ export const CreateEncounter = () => {
         },
         []
     )
+    
     //fetch for types
     const [types, assignType] = useState([])
-
-
     useEffect(
         () => {
-            fetch("http://localhost:8088/types")
-                .then(res => res.json())
+            getTypes()
                 .then(
                     (typeArray) => {
                         assignType(typeArray)
@@ -151,7 +147,7 @@ export const CreateEncounter = () => {
 
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Boss:</label>
+                    <label htmlFor="name">💀Boss:</label>
                     <input type="checkbox"
                         onChange={
                             (evt) => {
@@ -180,9 +176,6 @@ export const CreateEncounter = () => {
                 </div>
             </fieldset>
 
-            {//change make encounter button to be a next button that still submits encounter on click
-                //button takes user to the monster page with checkboxes where they can check the box of monsters in the encounter
-            }
             <button className="next-button" onClick={nextButton}>
                 Next
             </button>

@@ -1,6 +1,7 @@
 //This module will contain the code for an encounter randomizer
 import { useState } from "react"
 import { useEffect } from "react"
+import { getLocations, getTypes } from "../dataAccess"
 
 export const EncounterRandomizer = () => {
     const [encounters, setEncounters] = useState([])
@@ -27,12 +28,9 @@ export const EncounterRandomizer = () => {
 
     //fetch for locations
     const [locations, assignLocations] = useState([])
-
-
     useEffect(
         () => {
-            fetch("http://localhost:8088/locations")
-                .then(res => res.json())
+            getLocations()
                 .then(
                     (locationArray) => {
                         assignLocations(locationArray)
@@ -41,14 +39,12 @@ export const EncounterRandomizer = () => {
         },
         []
     )
+    
     //fetch for types
     const [types, assignType] = useState([])
-
-
     useEffect(
         () => {
-            fetch("http://localhost:8088/types")
-                .then(res => res.json())
+            getTypes()
                 .then(
                     (typeArray) => {
                         assignType(typeArray)
@@ -233,7 +229,7 @@ export const EncounterRandomizer = () => {
 
 
                 <div class="randomizer">
-                    <label>Boss:</label><input type="checkbox" value={searchCriteria.bossEncounter} onChange={
+                    <label>💀Boss:</label><input type="checkbox" value={searchCriteria.bossEncounter} onChange={
                         () => {
                             let copy = { ...searchCriteria }
                             copy.bossEncounter = !searchCriteria.bossEncounter
@@ -242,7 +238,8 @@ export const EncounterRandomizer = () => {
                     }></input>
 
                     <button class="randomButton" onClick={() => { createRandomEncounter() }}>Roll Random Encounter</button>
-                    {encounter?.id !== undefined ? <><p><i>{encounter.description}</i></p></> : encounter?.searchFailed ? "nothing matches that criteria" : ""}
+                    {encounter?.id !== undefined & encounter.typeId === 1 ? <><p><i>Your Party Encounters {encounter.description}...</i></p></> : encounter?.id !== undefined & encounter.typeId === 2? <><p><i>{encounter.description}</i></p></> : encounter?.searchFailed ? "nothing matches that criteria" : ""}
+                    
 
 
 

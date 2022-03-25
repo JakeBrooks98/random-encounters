@@ -13,6 +13,8 @@ fieldset {
     display: inline-block;
     margin: 0 auto;
     text-align: left;
+    width: 60em;
+    height:35em;
 }
 
 .form--login > fieldset > input[type="email"] {
