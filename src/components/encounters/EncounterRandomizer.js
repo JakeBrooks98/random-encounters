@@ -55,6 +55,7 @@ export const EncounterRandomizer = () => {
         []
     )
 
+    //message to display the message of what location the user chose
     const locationMessage =(copy) => {
         const messageContainer=document.querySelector(".locationMessage")
         if(copy.location !== 0){
@@ -72,6 +73,7 @@ export const EncounterRandomizer = () => {
         }
     }
 
+    //function to display message that encounter may be too difficult and they may need to check boss
     const challengeRatingMessage =(copy) => {
         const messageContainer=document.querySelector(".challengeRatingMessage")
         if(copy.challengeRating >= 2){
