@@ -1,6 +1,6 @@
 //This module will display the details of individual encounters
 import React, { useEffect, useState } from "react"
-import { useParams, useHistory, Link } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import { getExpandedEncounter, getLocations } from "../dataAccess"
 import { MonsterStats } from "../monsterStats"
 
@@ -78,7 +78,7 @@ export const EncounterDescription = () => {
 
 
     const backButton = () => {
-        history.push(`/Encounters`)
+        history.goBack()
     }
 
     const editEncounter = (evt) => {
