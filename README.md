@@ -6,6 +6,8 @@ An application used to quickly generate, find or create encounters for DnD 5e, b
 <h2><b>Installation and Setup</b></h2>
 
 Clone down this repository. You will need node and npm installed globally on your machine.
+In another tab or terminal, you will also need to clone down my Random-Encounters-API repository to access the database. 
+Then run this command in the terminal to run the server: json-server -p 8088 database.json
 
 Installation:
 
